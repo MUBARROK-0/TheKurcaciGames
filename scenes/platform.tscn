@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dr6imoojms0dr"]
+
+[ext_resource type="Texture2D" uid="uid://dktf6syw3en2y" path="res://assets/object and block/Tiny Tower FREE.png" id="1_oglbj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c5pms"]
+size = Vector2(16, 16)
+
+[node name="platform" type="AnimatableBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_oglbj")
+region_enabled = true
+region_rect = Rect2(144, 96, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_c5pms")
+one_way_collision = true

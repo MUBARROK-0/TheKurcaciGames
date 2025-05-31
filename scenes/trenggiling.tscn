@@ -1,0 +1,135 @@
+[gd_scene load_steps=19 format=3 uid="uid://bka7thxctppxx"]
+
+[ext_resource type="Script" path="res://scripts/trenggiling.gd" id="1_fjau0"]
+[ext_resource type="Texture2D" uid="uid://d06qhdv748hlf" path="res://assets/enemy/Ramses Free Package/Walk/Spr_Walk.png" id="1_vorqc"]
+[ext_resource type="PackedScene" uid="uid://3i2ge2tiftm0" path="res://scenes/killzone.tscn" id="2_3x028"]
+[ext_resource type="Texture2D" uid="uid://dl2ccggdq52ub" path="res://assets/enemy/Ramses Free Package/Track/Spr_Track.png" id="3_xoytr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3ybb"]
+atlas = ExtResource("1_vorqc")
+region = Rect2(0, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vylnb"]
+atlas = ExtResource("1_vorqc")
+region = Rect2(40, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2kwf3"]
+atlas = ExtResource("1_vorqc")
+region = Rect2(80, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mp766"]
+atlas = ExtResource("1_vorqc")
+region = Rect2(120, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_audqq"]
+atlas = ExtResource("1_vorqc")
+region = Rect2(160, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kbeyb"]
+atlas = ExtResource("1_vorqc")
+region = Rect2(200, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_om2ba"]
+atlas = ExtResource("1_vorqc")
+region = Rect2(240, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_341hv"]
+atlas = ExtResource("1_vorqc")
+region = Rect2(280, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_abiew"]
+atlas = ExtResource("3_xoytr")
+region = Rect2(0, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bnice"]
+atlas = ExtResource("3_xoytr")
+region = Rect2(40, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lol36"]
+atlas = ExtResource("3_xoytr")
+region = Rect2(80, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tmibm"]
+atlas = ExtResource("3_xoytr")
+region = Rect2(120, 0, 40, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_retwf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s3ybb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vylnb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2kwf3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mp766")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_audqq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kbeyb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_om2ba")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_341hv")
+}],
+"loop": true,
+"name": &"TrenggilingJalan",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_abiew")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bnice")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lol36")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tmibm")
+}],
+"loop": true,
+"name": &"TrenggilingMakan",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_88nrp"]
+size = Vector2(26, 15)
+
+[node name="Trenggiling" type="Node2D"]
+script = ExtResource("1_fjau0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_retwf")
+animation = &"TrenggilingJalan"
+autoplay = "TrenggilingJalan"
+frame_progress = 0.139927
+
+[node name="killzone" parent="." instance=ExtResource("2_3x028")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="killzone"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_88nrp")
+
+[node name="RayCastkanan" type="RayCast2D" parent="."]
+target_position = Vector2(14, 1)
+
+[node name="RayCastkiri" type="RayCast2D" parent="."]
+target_position = Vector2(-14, 1)
+
+[node name="RayCastTepiKiri" type="RayCast2D" parent="."]
+position = Vector2(-12, 1)
+target_position = Vector2(-5, 11)
+
+[node name="RayCastTepiKanan" type="RayCast2D" parent="."]
+position = Vector2(12, 1)
+target_position = Vector2(5, 11)
