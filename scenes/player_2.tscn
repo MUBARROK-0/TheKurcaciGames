@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://3ph6j2dq48hw"]
+[gd_scene load_steps=67 format=3 uid="uid://3ph6j2dq48hw"]
 
 [ext_resource type="Script" path="res://scripts/player_2.gd" id="1_0vkqm"]
 [ext_resource type="Texture2D" uid="uid://cagsr8ew13nce" path="res://assets/character/Hobbit - Idle1.png" id="1_c56e0"]
@@ -58,6 +58,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f5hdh"]
 size = Vector2(8, 14)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rpxro"]
+radius = 6.0
 
 [sub_resource type="Animation" id="Animation_0vphd"]
 resource_name = "Berhenti"
@@ -214,6 +217,12 @@ texture = ExtResource("1_c56e0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_f5hdh")
+
+[node name="AttackArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(6, 1)
+shape = SubResource("CircleShape2D_rpxro")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

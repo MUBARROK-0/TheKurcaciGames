@@ -31,6 +31,12 @@ func _physics_process(delta: float) -> void:
 
 	# Dapatkan arah input
 	var direction := Input.get_axis("ui_left", "ui_right")
+	
+	var overlapping_objects = $AttackArea.get_overlapping_areas()
+	
+	for area in overlapping_objects:
+		if area.get_parent().is_in_group("enemy"):
+			area.get_parent().die()
 
 	# Balik arah sprite
 	if direction > 0:

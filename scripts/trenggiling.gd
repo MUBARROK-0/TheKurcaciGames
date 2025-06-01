@@ -25,3 +25,7 @@ func _process(delta: float) -> void:
 		direction = 1
 	
 	position.x += direction * SPEED * delta
+
+
+func die():
+	queue_free()
