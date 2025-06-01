@@ -115,7 +115,6 @@ script = ExtResource("1_fjau0")
 sprite_frames = SubResource("SpriteFrames_retwf")
 animation = &"TrenggilingJalan"
 autoplay = "TrenggilingJalan"
-frame_progress = 0.139927
 
 [node name="killingenemy" type="Area2D" parent="."]
 

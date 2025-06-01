@@ -2,6 +2,7 @@ extends Node2D
 
 const SPEED = 25
 var direction = 1
+var is_dead = false  # Tambahan: status mati
 
 @onready var ray_cast_kanan = $RayCastkanan
 @onready var ray_cast_kiri = $RayCastkiri
@@ -10,6 +11,9 @@ var direction = 1
 @onready var animated_sprite_2d = $AnimatedSprite2D
 
 func _process(delta: float) -> void:
+	if is_dead:
+		return  # Jika mati, hentikan logika gerak
+
 	# Balik arah kalau tidak ada tanah di tepi
 	if not ray_cast_tepi_kanan.is_colliding():
 		direction = -1
@@ -18,10 +22,19 @@ func _process(delta: float) -> void:
 		direction = 1
 		animated_sprite_2d.flip_h = false
 	
-	# (Opsional) Balik arah kalau nabrak dinding
+	# Balik arah kalau nabrak dinding
 	if ray_cast_kanan.is_colliding():
 		direction = -1
 	elif ray_cast_kiri.is_colliding():
 		direction = 1
 	
 	position.x += direction * SPEED * delta
+
+func die() -> void:
+	is_dead = true
+	animated_sprite_2d.play("dead")
+	
+	# Tunggu sampai animasi selesai
+	await animated_sprite_2d.animation_finished
+	
+	queue_free()
