@@ -527,7 +527,7 @@ script = ExtResource("1_i7tlf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ydmrl")
-animation = &"SekeletonWalk"
+animation = &"SekeletonAttack"
 autoplay = "SekeletonWalk"
 
 [node name="Area2D" type="Area2D" parent="."]
