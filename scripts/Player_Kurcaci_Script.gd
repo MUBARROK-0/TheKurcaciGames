@@ -1,7 +1,5 @@
 extends CharacterBody2D
 
-class_name player2
-
 @onready var Sprite = $Sprite2D
 @onready var animationplayer = $AnimationPlayer
 @onready var attack_area = $AttackArea
@@ -32,7 +30,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("attack") and not is_attacking:
 		is_attacking = true
 		attack_shape.disabled = false  # Aktifkan area serang
-		animationplayer.play("attack")
+		animationplayer.play("KurcaciBlock")
 
 	# Arah gerak horizontal
 	var direction := Input.get_axis("ui_left", "ui_right")
@@ -53,11 +51,11 @@ func _physics_process(delta: float) -> void:
 	if not is_attacking:
 		if is_on_floor():
 			if direction == 0:
-				animationplayer.play("DiamDanBergerak")
+				animationplayer.play("KurcaciIdle")
 			else:
-				animationplayer.play("lari")
+				animationplayer.play("KurcaciRun")
 		else:
-			animationplayer.play("lompat")
+			animationplayer.play("KurcaciJump")
 
 	# Gerakkan karakter jika tidak menyerang
 	if not is_attacking:
@@ -73,7 +71,7 @@ func _physics_process(delta: float) -> void:
 
 # Callback saat animasi selesai
 func _on_animation_finished(anim_name: String):
-	if anim_name == "attack":
+	if anim_name == "KurcaciBlock":
 		is_attacking = false
 		attack_shape.disabled = true
 

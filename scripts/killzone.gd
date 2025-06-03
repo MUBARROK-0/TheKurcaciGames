@@ -5,7 +5,7 @@ var player
 
 func _ready() -> void:
 	checkpoint_manager = get_node("/root/game/CheckPointManager")
-	player = get_node("/root/game/player2")
+	player = get_node("/root/game/Player_Kurcaci")
 
 
 func _on_body_entered(body: Node2D) -> void:

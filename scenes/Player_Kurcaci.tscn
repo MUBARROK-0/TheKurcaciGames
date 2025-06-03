@@ -1,6 +1,6 @@
-[gd_scene load_steps=67 format=3 uid="uid://3ph6j2dq48hw"]
+[gd_scene load_steps=85 format=3 uid="uid://3ph6j2dq48hw"]
 
-[ext_resource type="Script" path="res://scripts/player_2.gd" id="1_0vkqm"]
+[ext_resource type="Script" path="res://scripts/Player_Kurcaci_Script.gd" id="1_0vkqm"]
 [ext_resource type="Texture2D" uid="uid://cagsr8ew13nce" path="res://assets/character/Hobbit - Idle1.png" id="1_c56e0"]
 [ext_resource type="Texture2D" uid="uid://tpe1touco45o" path="res://assets/character/Hobbit - Idle2.png" id="2_xl6im"]
 [ext_resource type="Texture2D" uid="uid://bxdvapo4abkcy" path="res://assets/character/Hobbit - Idle3.png" id="3_gevfy"]
@@ -54,18 +54,35 @@
 [ext_resource type="Texture2D" uid="uid://kft07yonnodb" path="res://assets/character/Hobbit - stop5.png" id="54_irkb6"]
 [ext_resource type="Texture2D" uid="uid://dqvce2nnl8iiv" path="res://assets/character/Hobbit - stop6.png" id="55_bneba"]
 [ext_resource type="Texture2D" uid="uid://wcgk4sejul0o" path="res://assets/character/Hobbit - stop7.png" id="56_63c27"]
+[ext_resource type="Texture2D" uid="uid://b008d27wqxne0" path="res://assets/character/Hobbit - attack1.png" id="56_wpiy5"]
 [ext_resource type="Texture2D" uid="uid://bn3u0ygpxbfos" path="res://assets/character/Hobbit - stop8.png" id="57_q8lhs"]
+[ext_resource type="Texture2D" uid="uid://dy6wlrwu5el8r" path="res://assets/character/Hobbit - attack2.png" id="57_t3q4q"]
+[ext_resource type="Texture2D" uid="uid://dyajauj6amsa7" path="res://assets/character/Hobbit - attack3.png" id="58_q4o6e"]
+[ext_resource type="Texture2D" uid="uid://cmnb0xm7qhyl5" path="res://assets/character/Hobbit - attack4.png" id="59_11ppo"]
+[ext_resource type="Texture2D" uid="uid://ce0qfqtmwt7f1" path="res://assets/character/Hobbit - attack5.png" id="60_oe73q"]
+[ext_resource type="Texture2D" uid="uid://dqyej2xvaefkh" path="res://assets/character/Hobbit - attack6.png" id="61_amnai"]
+[ext_resource type="Texture2D" uid="uid://56o3wymmcnsi" path="res://assets/character/Hobbit - attack7.png" id="62_25chm"]
+[ext_resource type="Texture2D" uid="uid://bh2l6emsc8p3p" path="res://assets/character/Hobbit - attack8.png" id="63_1n2h2"]
+[ext_resource type="Texture2D" uid="uid://bycbyhpayj7vw" path="res://assets/character/Hobbit - attack9.png" id="64_idmom"]
+[ext_resource type="Texture2D" uid="uid://dg2wluypvh46i" path="res://assets/character/Hobbit - attack10.png" id="65_kw3hk"]
+[ext_resource type="Texture2D" uid="uid://brvuuc2x53jh3" path="res://assets/character/Hobbit - attack11.png" id="66_xo0m5"]
+[ext_resource type="Texture2D" uid="uid://ne7nucbqbw0" path="res://assets/character/Hobbit - attack12.png" id="67_kbpst"]
+[ext_resource type="Texture2D" uid="uid://cvdsddwjgs5uk" path="res://assets/character/Hobbit - attack13.png" id="68_so4a6"]
+[ext_resource type="Texture2D" uid="uid://b240kiqq1adyb" path="res://assets/character/Hobbit - attack14.png" id="69_o655s"]
+[ext_resource type="Texture2D" uid="uid://1hrf1xktwwde" path="res://assets/character/Hobbit - attack15.png" id="70_l4ybh"]
+[ext_resource type="Texture2D" uid="uid://g3klxde1xuqf" path="res://assets/character/Hobbit - attack16.png" id="71_pte5c"]
+[ext_resource type="Texture2D" uid="uid://4fs2o60l73va" path="res://assets/character/Hobbit - attack17.png" id="72_nvat8"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_f5hdh"]
-size = Vector2(8, 14)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_18hdw"]
+radius = 5.0
+height = 16.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rpxro"]
 radius = 6.0
 
-[sub_resource type="Animation" id="Animation_0vphd"]
-resource_name = "Berhenti"
-length = 0.9
-loop_mode = 1
+[sub_resource type="Animation" id="Animation_uuaem"]
+resource_name = "attack"
+length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -73,33 +90,15 @@ tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.0333333, 0.166667, 0.2, 0.233333, 0.266667, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("50_xu7wk"), ExtResource("51_7kong"), ExtResource("52_i3amw"), ExtResource("53_4ew6w"), ExtResource("54_irkb6"), ExtResource("55_bneba"), ExtResource("56_63c27"), ExtResource("57_q8lhs")]
-}
-
-[sub_resource type="Animation" id="Animation_papn3"]
-resource_name = "DiamDanBergerak"
-length = 0.55
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.0333333, 0.2, 0.366667, 0.533333),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("1_c56e0"), ExtResource("2_xl6im"), ExtResource("3_gevfy"), ExtResource("4_7ip4k")]
+"values": [ExtResource("25_qyb71"), ExtResource("26_s5ul4"), ExtResource("27_e02b3"), ExtResource("28_wh03k"), ExtResource("29_ee1rw"), ExtResource("30_gynqr"), ExtResource("31_6xvnw")]
 }
 
 [sub_resource type="Animation" id="Animation_3gdnm"]
 resource_name = "Meninggal"
 length = 1.3
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -111,21 +110,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [ExtResource("34_b5gqp"), ExtResource("35_som0g"), ExtResource("36_scf6b"), ExtResource("37_kkx32"), ExtResource("38_s5xgl"), ExtResource("39_na0uq"), ExtResource("40_d7unb"), ExtResource("41_jn376"), ExtResource("42_hjdyh"), ExtResource("43_fu8dw"), ExtResource("44_uqral"), ExtResource("45_88pji")]
-}
-
-[sub_resource type="Animation" id="Animation_4oyrg"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("1_c56e0")]
 }
 
 [sub_resource type="Animation" id="Animation_t2eli"]
@@ -145,25 +129,9 @@ tracks/0/keys = {
 "values": [ExtResource("46_xjhr3"), ExtResource("47_k38un"), ExtResource("48_goh6x"), ExtResource("49_1gqn1")]
 }
 
-[sub_resource type="Animation" id="Animation_uuaem"]
-resource_name = "attack"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.166667, 0.2, 0.233333, 0.266667, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("25_qyb71"), ExtResource("26_s5ul4"), ExtResource("27_e02b3"), ExtResource("28_wh03k"), ExtResource("29_ee1rw"), ExtResource("30_gynqr"), ExtResource("31_6xvnw")]
-}
-
-[sub_resource type="Animation" id="Animation_6sbv2"]
-resource_name = "lari"
-length = 0.35
+[sub_resource type="Animation" id="Animation_papn3"]
+resource_name = "DiamDanBergerak"
+length = 0.55
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -172,10 +140,10 @@ tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0.0333333, 0.2, 0.366667, 0.533333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("5_rxrr7"), ExtResource("6_4rdsv"), ExtResource("7_xhgdi"), ExtResource("8_ac3sc"), ExtResource("9_udjnr"), ExtResource("10_00too"), ExtResource("11_o2anx"), ExtResource("12_yun68"), ExtResource("13_xumks"), ExtResource("14_hostt")]
+"values": [ExtResource("1_c56e0"), ExtResource("2_xl6im"), ExtResource("3_gevfy"), ExtResource("4_7ip4k")]
 }
 
 [sub_resource type="Animation" id="Animation_in3bh"]
@@ -195,19 +163,86 @@ tracks/0/keys = {
 "values": [ExtResource("15_4nyr0"), ExtResource("16_8nniu"), ExtResource("5_rxrr7"), ExtResource("18_yur7m"), ExtResource("19_aomub"), ExtResource("20_5n8jm"), ExtResource("21_h2jxk"), ExtResource("22_anqwd"), ExtResource("23_pj1ut"), ExtResource("24_gxtu4")]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_g1wwo"]
-_data = {
-"Berhenti": SubResource("Animation_0vphd"),
-"DiamDanBergerak": SubResource("Animation_papn3"),
-"Meninggal": SubResource("Animation_3gdnm"),
-"RESET": SubResource("Animation_4oyrg"),
-"Terdamage": SubResource("Animation_t2eli"),
-"attack": SubResource("Animation_uuaem"),
-"lari": SubResource("Animation_6sbv2"),
-"lompat": SubResource("Animation_in3bh")
+[sub_resource type="Animation" id="Animation_gmn05"]
+resource_name = "KurcaciRangeAttack"
+length = 1.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("56_wpiy5"), ExtResource("57_t3q4q"), ExtResource("58_q4o6e"), ExtResource("59_11ppo"), ExtResource("60_oe73q"), ExtResource("61_amnai"), ExtResource("62_25chm"), ExtResource("63_1n2h2"), ExtResource("64_idmom"), ExtResource("65_kw3hk"), ExtResource("66_xo0m5"), ExtResource("67_kbpst"), ExtResource("68_so4a6"), ExtResource("69_o655s"), ExtResource("70_l4ybh"), ExtResource("71_pte5c"), ExtResource("72_nvat8")]
 }
 
-[node name="player2" type="CharacterBody2D" groups=["Player"]]
+[sub_resource type="Animation" id="Animation_6sbv2"]
+resource_name = "lari"
+length = 0.35
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("5_rxrr7"), ExtResource("6_4rdsv"), ExtResource("7_xhgdi"), ExtResource("8_ac3sc"), ExtResource("9_udjnr"), ExtResource("10_00too"), ExtResource("11_o2anx"), ExtResource("12_yun68"), ExtResource("13_xumks"), ExtResource("14_hostt")]
+}
+
+[sub_resource type="Animation" id="Animation_0vphd"]
+resource_name = "Berhenti"
+length = 0.9
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("50_xu7wk"), ExtResource("51_7kong"), ExtResource("52_i3amw"), ExtResource("53_4ew6w"), ExtResource("54_irkb6"), ExtResource("55_bneba"), ExtResource("56_63c27"), ExtResource("57_q8lhs")]
+}
+
+[sub_resource type="Animation" id="Animation_4oyrg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_c56e0")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g1wwo"]
+_data = {
+"KurcaciBlock": SubResource("Animation_uuaem"),
+"KurcaciDead": SubResource("Animation_3gdnm"),
+"KurcaciHit": SubResource("Animation_t2eli"),
+"KurcaciIdle": SubResource("Animation_papn3"),
+"KurcaciJump": SubResource("Animation_in3bh"),
+"KurcaciRangeAttack": SubResource("Animation_gmn05"),
+"KurcaciRun": SubResource("Animation_6sbv2"),
+"KurcaciStop": SubResource("Animation_0vphd"),
+"RESET": SubResource("Animation_4oyrg")
+}
+
+[node name="Player_Kurcaci" type="CharacterBody2D" groups=["Player"]]
 top_level = true
 collision_layer = 2
 script = ExtResource("1_0vkqm")
@@ -216,7 +251,8 @@ script = ExtResource("1_0vkqm")
 texture = ExtResource("1_c56e0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_f5hdh")
+position = Vector2(0, -1)
+shape = SubResource("CapsuleShape2D_18hdw")
 
 [node name="AttackArea" type="Area2D" parent="."]
 
