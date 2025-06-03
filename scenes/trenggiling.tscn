@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bka7thxctppxx"]
+[gd_scene load_steps=20 format=3 uid="uid://bka7thxctppxx"]
 
 [ext_resource type="Script" path="res://scripts/trenggiling.gd" id="1_fjau0"]
 [ext_resource type="Texture2D" uid="uid://d06qhdv748hlf" path="res://assets/enemy/Ramses Free Package/Walk/Spr_Walk.png" id="1_vorqc"]
@@ -102,17 +102,25 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uqpmj"]
+size = Vector2(26, 15)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_88nrp"]
 size = Vector2(26, 15)
 
-[node name="Trenggiling" type="Node2D"]
+[node name="Trenggiling" type="Node2D" groups=["enemy"]]
 script = ExtResource("1_fjau0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_retwf")
 animation = &"TrenggilingJalan"
 autoplay = "TrenggilingJalan"
-frame_progress = 0.139927
+
+[node name="killingenemy" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="killingenemy"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_uqpmj")
 
 [node name="killzone" parent="." instance=ExtResource("2_3x028")]
 

@@ -4,11 +4,13 @@ const SPEED = 25
 var direction = 1
 var is_dead = false  # Tambahan: status mati
 
-@onready var ray_cast_kanan = $RayCastkanan
-@onready var ray_cast_kiri = $RayCastkiri
+@onready var ray_cast_kanan = $RayCastKanan
+@onready var ray_cast_kiri = $RayCastKiri
 @onready var ray_cast_tepi_kanan = $RayCastTepiKanan
 @onready var ray_cast_tepi_kiri = $RayCastTepiKiri
 @onready var animated_sprite_2d = $AnimatedSprite2D
+@onready var collisionshape2d = $Area2D/CollisionShape2D
+@onready var collision = $killzone/CollisionShape2D
 
 func _process(delta: float) -> void:
 	if is_dead:
@@ -32,9 +34,22 @@ func _process(delta: float) -> void:
 
 func die() -> void:
 	is_dead = true
-	animated_sprite_2d.play("dead")
-	
+
+	# Nonaktifkan collider dengan aman menggunakan call_deferred
+	$Area2D/CollisionShape2D.call_deferred("set_disabled", true)
+	$killzone/CollisionShape2D.call_deferred("set_disabled", true)
+
+	# Putar animasi jatuh/mati
+	animated_sprite_2d.play("SekeletonDeadFall")
+
 	# Tunggu sampai animasi selesai
 	await animated_sprite_2d.animation_finished
-	
-	queue_free()
+
+	# Kunci posisinya agar tidak bergeser
+	set_process(false)
+	set_physics_process(false)
+
+	# Ubah sprite ke kondisi 'mati diam' (1 frame statis)
+	animated_sprite_2d.play("SekeletonDead")
+	animated_sprite_2d.frame = 0
+	animated_sprite_2d.pause()
