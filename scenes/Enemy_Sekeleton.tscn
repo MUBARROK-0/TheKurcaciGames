@@ -520,36 +520,37 @@ animations = [{
 size = Vector2(13, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jtapu"]
-size = Vector2(13, 24)
+size = Vector2(22, 24)
 
 [node name="Enemy_Sekeleton" type="Node2D" groups=["enemy"]]
 script = ExtResource("1_i7tlf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ydmrl")
-animation = &"SekeletonAttack"
+animation = &"SekeletonWalk"
 autoplay = "SekeletonWalk"
+frame_progress = 0.356543
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-3.5, 5)
+position = Vector2(2, 5)
 shape = SubResource("RectangleShape2D_nckrs")
 
 [node name="killzone" parent="." instance=ExtResource("7_vx2eb")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="killzone"]
-position = Vector2(-3.5, 5)
+position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_jtapu")
 
 [node name="RayCastKanan" type="RayCast2D" parent="."]
-target_position = Vector2(6, 0)
+target_position = Vector2(5, 0)
 
 [node name="RayCastKiri" type="RayCast2D" parent="."]
 target_position = Vector2(-12, 0)
 
 [node name="RayCastTepiKanan" type="RayCast2D" parent="."]
-position = Vector2(4, 13)
+position = Vector2(2, 13)
 target_position = Vector2(6, 6)
 
 [node name="RayCastTepiKiri" type="RayCast2D" parent="."]
