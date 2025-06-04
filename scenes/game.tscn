@@ -2064,9 +2064,6 @@ position = Vector2(14, 221)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="killzone"]
 shape = SubResource("WorldBoundaryShape2D_nn80j")
 
-[node name="checkpoint" parent="killzone" instance=ExtResource("17_undbe")]
-position = Vector2(431, -245)
-
 [node name="coins" type="Node" parent="."]
 
 [node name="coin" parent="coins" instance=ExtResource("14_vaj8i")]
@@ -2085,13 +2082,28 @@ position = Vector2(270, -39)
 position = Vector2(102, -7)
 
 [node name="checkpoint" parent="." instance=ExtResource("17_undbe")]
-position = Vector2(-93, 40)
+position = Vector2(501, -23)
 
 [node name="CheckPointManager" type="Node" parent="."]
 script = ExtResource("18_btnrn")
 
-[node name="Enemy_Sekeleton" parent="." instance=ExtResource("19_uffns")]
-position = Vector2(165, 80)
-
 [node name="Enemy_Sekeleton2" parent="." instance=ExtResource("19_uffns")]
 position = Vector2(825, -16)
+
+[node name="Enemy_Sekeleton3" parent="." instance=ExtResource("19_uffns")]
+position = Vector2(-40, 48)
+
+[node name="Enemy_Sekeleton4" parent="." instance=ExtResource("19_uffns")]
+position = Vector2(-67, 48)
+
+[node name="Enemy_Sekeleton5" parent="." instance=ExtResource("19_uffns")]
+position = Vector2(-94, 48)
+
+[node name="Enemy_Sekeleton6" parent="." instance=ExtResource("19_uffns")]
+position = Vector2(-121, 48)
+
+[node name="Enemy_Sekeleton" parent="." instance=ExtResource("19_uffns")]
+position = Vector2(-13, 48)
+
+[node name="Enemy_Sekeleton7" parent="." instance=ExtResource("19_uffns")]
+position = Vector2(15, 48)
