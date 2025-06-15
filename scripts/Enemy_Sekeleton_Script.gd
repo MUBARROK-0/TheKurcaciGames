@@ -1,6 +1,6 @@
 extends Node2D
 
-const SPEED = 25
+const SPEED = 20
 var direction = 1
 var is_dead = false  # Tambahan: status mati
 

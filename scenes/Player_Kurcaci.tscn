@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=3 uid="uid://3ph6j2dq48hw"]
+[gd_scene load_steps=80 format=3 uid="uid://3ph6j2dq48hw"]
 
 [ext_resource type="Script" path="res://scripts/Player_Kurcaci_Script.gd" id="1_0vkqm"]
 [ext_resource type="Texture2D" uid="uid://cagsr8ew13nce" path="res://assets/character/Hobbit - Idle1.png" id="1_c56e0"]
@@ -54,12 +54,7 @@
 [ext_resource type="Texture2D" uid="uid://kft07yonnodb" path="res://assets/character/Hobbit - stop5.png" id="54_irkb6"]
 [ext_resource type="Texture2D" uid="uid://dqvce2nnl8iiv" path="res://assets/character/Hobbit - stop6.png" id="55_bneba"]
 [ext_resource type="Texture2D" uid="uid://wcgk4sejul0o" path="res://assets/character/Hobbit - stop7.png" id="56_63c27"]
-[ext_resource type="Texture2D" uid="uid://b008d27wqxne0" path="res://assets/character/Hobbit - attack1.png" id="56_wpiy5"]
 [ext_resource type="Texture2D" uid="uid://bn3u0ygpxbfos" path="res://assets/character/Hobbit - stop8.png" id="57_q8lhs"]
-[ext_resource type="Texture2D" uid="uid://dy6wlrwu5el8r" path="res://assets/character/Hobbit - attack2.png" id="57_t3q4q"]
-[ext_resource type="Texture2D" uid="uid://dyajauj6amsa7" path="res://assets/character/Hobbit - attack3.png" id="58_q4o6e"]
-[ext_resource type="Texture2D" uid="uid://cmnb0xm7qhyl5" path="res://assets/character/Hobbit - attack4.png" id="59_11ppo"]
-[ext_resource type="Texture2D" uid="uid://ce0qfqtmwt7f1" path="res://assets/character/Hobbit - attack5.png" id="60_oe73q"]
 [ext_resource type="Texture2D" uid="uid://dqyej2xvaefkh" path="res://assets/character/Hobbit - attack6.png" id="61_amnai"]
 [ext_resource type="Texture2D" uid="uid://56o3wymmcnsi" path="res://assets/character/Hobbit - attack7.png" id="62_25chm"]
 [ext_resource type="Texture2D" uid="uid://bh2l6emsc8p3p" path="res://assets/character/Hobbit - attack8.png" id="63_1n2h2"]
@@ -165,8 +160,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_gmn05"]
 resource_name = "KurcaciRangeAttack"
-length = 1.6
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -174,10 +167,10 @@ tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.866667, 0.933333, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("56_wpiy5"), ExtResource("57_t3q4q"), ExtResource("58_q4o6e"), ExtResource("59_11ppo"), ExtResource("60_oe73q"), ExtResource("61_amnai"), ExtResource("62_25chm"), ExtResource("63_1n2h2"), ExtResource("64_idmom"), ExtResource("65_kw3hk"), ExtResource("66_xo0m5"), ExtResource("67_kbpst"), ExtResource("68_so4a6"), ExtResource("69_o655s"), ExtResource("70_l4ybh"), ExtResource("71_pte5c"), ExtResource("72_nvat8")]
+"values": [ExtResource("61_amnai"), ExtResource("62_25chm"), ExtResource("63_1n2h2"), ExtResource("64_idmom"), ExtResource("65_kw3hk"), ExtResource("66_xo0m5"), ExtResource("67_kbpst"), ExtResource("68_so4a6"), ExtResource("69_o655s"), ExtResource("70_l4ybh"), ExtResource("71_pte5c"), ExtResource("72_nvat8")]
 }
 
 [sub_resource type="Animation" id="Animation_6sbv2"]
@@ -265,4 +258,9 @@ libraries = {
 "": SubResource("AnimationLibrary_g1wwo")
 }
 
+[node name="RangeAttackDelayTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
 [connection signal="area_entered" from="AttackArea" to="." method="_on_attack_area_area_entered"]
+[connection signal="timeout" from="RangeAttackDelayTimer" to="." method="_on_range_attack_delay_timer_timeout"]
