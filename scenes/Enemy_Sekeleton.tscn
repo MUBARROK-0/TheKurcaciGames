@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://cosof0dyqc5rf"]
+[gd_scene load_steps=73 format=3 uid="uid://cosof0dyqc5rf"]
 
 [ext_resource type="Texture2D" uid="uid://mwf0c4oo0hoc" path="res://assets/enemy/Sekeleton/Skeleton Attack.png" id="1_04oie"]
 [ext_resource type="Script" path="res://scripts/Enemy_Sekeleton_Script.gd" id="1_i7tlf"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://chvs5x5dqr53k" path="res://assets/enemy/Sekeleton/Skeleton Idle.png" id="4_emrg5"]
 [ext_resource type="Texture2D" uid="uid://bns5rf2555qrh" path="res://assets/enemy/Sekeleton/Skeleton React.png" id="5_uuikm"]
 [ext_resource type="Texture2D" uid="uid://6su2owh6osh2" path="res://assets/enemy/Sekeleton/Skeleton Walk.png" id="6_f6fhe"]
-[ext_resource type="PackedScene" uid="uid://3i2ge2tiftm0" path="res://scenes/killzone.tscn" id="7_vx2eb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6wltb"]
 atlas = ExtResource("1_04oie")
@@ -60,26 +59,6 @@ region = Rect2(473, 0, 43, 37)
 [sub_resource type="AtlasTexture" id="AtlasTexture_33h0h"]
 atlas = ExtResource("1_04oie")
 region = Rect2(516, 0, 43, 37)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4kv6u"]
-atlas = ExtResource("1_04oie")
-region = Rect2(559, 0, 43, 37)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i2jcl"]
-atlas = ExtResource("1_04oie")
-region = Rect2(602, 0, 43, 37)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8mf41"]
-atlas = ExtResource("1_04oie")
-region = Rect2(645, 0, 43, 37)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fm522"]
-atlas = ExtResource("1_04oie")
-region = Rect2(688, 0, 43, 37)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7nhnx"]
-atlas = ExtResource("1_04oie")
-region = Rect2(731, 0, 43, 37)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qle6x"]
 atlas = ExtResource("2_6bjna")
@@ -318,21 +297,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_33h0h")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4kv6u")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_i2jcl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8mf41")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fm522")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7nhnx")
 }],
 "loop": false,
 "name": &"SekeletonAttack",
@@ -516,33 +480,24 @@ animations = [{
 "speed": 15.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jtapu"]
-size = Vector2(22, 24)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nckrs"]
 size = Vector2(13, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q6v01"]
+size = Vector2(20, 31)
 
 [node name="Enemy_Sekeleton" type="Node2D" groups=["enemy"]]
 script = ExtResource("1_i7tlf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, 2)
 sprite_frames = SubResource("SpriteFrames_ydmrl")
-animation = &"SekeletonAttack"
+animation = &"SekeletonWalk"
 autoplay = "SekeletonWalk"
-frame = 17
-frame_progress = 1.0
-
-[node name="killzone" parent="." instance=ExtResource("7_vx2eb")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="killzone"]
-visible = false
-position = Vector2(0, 4)
-shape = SubResource("RectangleShape2D_jtapu")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-visible = false
 position = Vector2(2, 5)
 shape = SubResource("RectangleShape2D_nckrs")
 
@@ -565,3 +520,12 @@ target_position = Vector2(0, 5)
 visible = false
 position = Vector2(-11, 14)
 target_position = Vector2(0, 5)
+
+[node name="DetectionArea" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+position = Vector2(19, 2)
+shape = SubResource("RectangleShape2D_q6v01")
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]

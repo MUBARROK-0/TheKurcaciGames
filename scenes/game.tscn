@@ -2091,19 +2091,4 @@ script = ExtResource("18_btnrn")
 position = Vector2(825, -16)
 
 [node name="Enemy_Sekeleton3" parent="." instance=ExtResource("19_uffns")]
-position = Vector2(-40, 48)
-
-[node name="Enemy_Sekeleton4" parent="." instance=ExtResource("19_uffns")]
-position = Vector2(-67, 48)
-
-[node name="Enemy_Sekeleton5" parent="." instance=ExtResource("19_uffns")]
-position = Vector2(-94, 48)
-
-[node name="Enemy_Sekeleton6" parent="." instance=ExtResource("19_uffns")]
-position = Vector2(-121, 48)
-
-[node name="Enemy_Sekeleton" parent="." instance=ExtResource("19_uffns")]
-position = Vector2(-13, 48)
-
-[node name="Enemy_Sekeleton7" parent="." instance=ExtResource("19_uffns")]
-position = Vector2(15, 48)
+position = Vector2(-40, 46)
