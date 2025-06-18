@@ -334,7 +334,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_7nhnx")
 }],
-"loop": true,
+"loop": false,
 "name": &"SekeletonAttack",
 "speed": 10.0
 }, {
@@ -527,33 +527,41 @@ script = ExtResource("1_i7tlf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ydmrl")
-animation = &"SekeletonWalk"
+animation = &"SekeletonAttack"
 autoplay = "SekeletonWalk"
+frame = 17
+frame_progress = 1.0
 
 [node name="killzone" parent="." instance=ExtResource("7_vx2eb")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="killzone"]
+visible = false
 position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_jtapu")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
 position = Vector2(2, 5)
 shape = SubResource("RectangleShape2D_nckrs")
 
 [node name="RayCastKanan" type="RayCast2D" parent="."]
+visible = false
 position = Vector2(8, 0)
 target_position = Vector2(4, 0)
 
 [node name="RayCastKiri" type="RayCast2D" parent="."]
+visible = false
 position = Vector2(-8, 0)
 target_position = Vector2(-4, 0)
 
 [node name="RayCastTepiKanan" type="RayCast2D" parent="."]
+visible = false
 position = Vector2(11, 14)
 target_position = Vector2(0, 5)
 
 [node name="RayCastTepiKiri" type="RayCast2D" parent="."]
+visible = false
 position = Vector2(-11, 14)
 target_position = Vector2(0, 5)
