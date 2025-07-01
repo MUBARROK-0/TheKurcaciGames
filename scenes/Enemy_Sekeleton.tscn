@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://cosof0dyqc5rf"]
+[gd_scene load_steps=74 format=3 uid="uid://cosof0dyqc5rf"]
 
 [ext_resource type="Texture2D" uid="uid://mwf0c4oo0hoc" path="res://assets/enemy/Sekeleton/Skeleton Attack.png" id="1_04oie"]
 [ext_resource type="Script" path="res://scripts/Enemy_Sekeleton_Script.gd" id="1_i7tlf"]
@@ -376,7 +376,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_l0qar")
 }],
-"loop": true,
+"loop": false,
 "name": &"SekeletonHit",
 "speed": 10.0
 }, {
@@ -431,9 +431,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_sdqi6")
 }],
-"loop": true,
+"loop": false,
 "name": &"SekeletonReact",
-"speed": 10.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -477,14 +477,17 @@ animations = [{
 }],
 "loop": true,
 "name": &"SekeletonWalk",
-"speed": 15.0
+"speed": 13.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nckrs"]
-size = Vector2(13, 24)
+size = Vector2(13.5, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q6v01"]
-size = Vector2(20, 31)
+size = Vector2(27, 31)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xbk6c"]
+size = Vector2(38.5, 21.75)
 
 [node name="Enemy_Sekeleton" type="Node2D" groups=["enemy"]]
 script = ExtResource("1_i7tlf")
@@ -492,13 +495,15 @@ script = ExtResource("1_i7tlf")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, 2)
 sprite_frames = SubResource("SpriteFrames_ydmrl")
-animation = &"SekeletonWalk"
+animation = &"SekeletonDeadFall"
 autoplay = "SekeletonWalk"
+frame = 11
+frame_progress = 1.0
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="BodyEnemy" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(2, 5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BodyEnemy"]
+position = Vector2(-2.25, 6)
 shape = SubResource("RectangleShape2D_nckrs")
 
 [node name="RayCastKanan" type="RayCast2D" parent="."]
@@ -512,20 +517,28 @@ position = Vector2(-8, 0)
 target_position = Vector2(-4, 0)
 
 [node name="RayCastTepiKanan" type="RayCast2D" parent="."]
-visible = false
-position = Vector2(11, 14)
+position = Vector2(15, 14)
 target_position = Vector2(0, 5)
 
 [node name="RayCastTepiKiri" type="RayCast2D" parent="."]
-visible = false
-position = Vector2(-11, 14)
+position = Vector2(-19, 14)
 target_position = Vector2(0, 5)
 
 [node name="DetectionArea" type="Area2D" parent="."]
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
-position = Vector2(19, 2)
+visible = false
+position = Vector2(22.5, 2)
 shape = SubResource("RectangleShape2D_q6v01")
 
+[node name="AttackArea" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+visible = false
+position = Vector2(21.75, 7.125)
+shape = SubResource("RectangleShape2D_xbk6c")
+
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]

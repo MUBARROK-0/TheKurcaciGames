@@ -2,8 +2,9 @@ extends CharacterBody2D
 
 @onready var Sprite = $Sprite2D
 @onready var animationplayer = $AnimationPlayer
-@onready var attack_area = $AttackArea
-@onready var attack_shape = $AttackArea/CollisionShape2D
+@onready var attack_area = $BlockArea
+@onready var attack_shape = $BlockArea/CollisionShape2D
+@onready var bodyplayer = $BodyPlayer
 @onready var bullet = preload("res://scenes/Player_Kurcaci_Bullet.tscn")
 
 # Variabel kecepatan lari dan lompatan player
@@ -31,11 +32,17 @@ func _physics_process(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 
 	# Tombol serang
-	if Input.is_action_just_pressed("attack") and not is_attacking:
+	if Input.is_action_just_pressed("serang") and not is_attacking and not is_range_attacking and is_on_floor():
 		is_attacking = true
 		attack_shape.disabled = false  # Aktifkan area serang
 		animationplayer.play("KurcaciBlock")
-
+	
+	if Input.is_action_just_pressed("Button_Range_Attack") and not is_attacking and not is_range_attacking and is_on_floor():
+		is_range_attacking = true
+		animationplayer.play("KurcaciRangeAttack")
+		# Start the delay timer
+		$RangeAttackDelayTimer.start()
+	
 	# Arah gerak horizontal
 	var direction := Input.get_axis("ui_left", "ui_right")
 	
@@ -62,21 +69,17 @@ func _physics_process(delta: float) -> void:
 			animationplayer.play("KurcaciJump")
 
 	# Gerakkan karakter jika tidak menyerang
-	if not is_attacking:
+		# Gerakkan karakter jika tidak menyerang (baik serangan biasa maupun serangan jarak jauh)
+	if not is_attacking and not is_range_attacking:
 		if direction:
 			velocity.x = direction * SPEED
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
-
+	else:
+		# Jika sedang menyerang, berhentikan gerakan horizontal
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+		
 	move_and_slide()
-	# Fungsi ini dipanggil dari animasi "attack" (via AnimationPlayer Call Method Track)
-
-	if Input.is_action_just_pressed("Button_Range_Attack") and not is_attacking and not is_range_attacking:
-		is_range_attacking = true
-		animationplayer.play("KurcaciRangeAttack")
-
-		# Start the delay timer
-		$RangeAttackDelayTimer.start()
 
 # Callback saat animasi selesai
 func _on_animation_finished(anim_name: String):
@@ -97,3 +100,16 @@ func _on_range_attack_delay_timer_timeout() -> void:
 	bullet_temp.direction = 1 if not Sprite.flip_h else -1
 	bullet_temp.position = global_position
 	get_parent().add_child(bullet_temp)
+	
+func die():
+	# Hentikan semua input dan animasi
+	set_physics_process(false)
+	is_attacking = false
+	is_range_attacking = false
+	bodyplayer.set_deferred("disabled", true)
+	attack_shape.set_deferred("disabled", true)
+	animationplayer.stop()
+	animationplayer.play("KurcaciDead")  # pastikan animasi ini ada
+
+	# Tambahkan efek apapun yang kamu mau di sini
+	print("Player mati")

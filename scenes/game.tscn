@@ -2087,8 +2087,8 @@ position = Vector2(501, -23)
 [node name="CheckPointManager" type="Node" parent="."]
 script = ExtResource("18_btnrn")
 
-[node name="Enemy_Sekeleton2" parent="." instance=ExtResource("19_uffns")]
-position = Vector2(825, -16)
+[node name="Enemy_Sekeleton" parent="." instance=ExtResource("19_uffns")]
+position = Vector2(245, 78)
 
-[node name="Enemy_Sekeleton3" parent="." instance=ExtResource("19_uffns")]
-position = Vector2(-40, 46)
+[node name="Enemy_Sekeleton2" parent="." instance=ExtResource("19_uffns")]
+position = Vector2(-37, 46)
