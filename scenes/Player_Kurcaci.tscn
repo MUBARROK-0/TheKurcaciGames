@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://3ph6j2dq48hw"]
+[gd_scene load_steps=79 format=3 uid="uid://3ph6j2dq48hw"]
 
 [ext_resource type="Script" path="res://scripts/Player_Kurcaci_Script.gd" id="1_0vkqm"]
 [ext_resource type="Texture2D" uid="uid://cagsr8ew13nce" path="res://assets/character/Hobbit - Idle1.png" id="1_c56e0"]
@@ -31,7 +31,6 @@
 [ext_resource type="Texture2D" uid="uid://dgqcpja8n1e4l" path="res://assets/character/Hobbit - block10.png" id="29_ee1rw"]
 [ext_resource type="Texture2D" uid="uid://xve3f4hj78ua" path="res://assets/character/Hobbit - block11.png" id="30_gynqr"]
 [ext_resource type="Texture2D" uid="uid://b0eadcucxjwe1" path="res://assets/character/Hobbit - block12.png" id="31_6xvnw"]
-[ext_resource type="Texture2D" uid="uid://bhbk4dikymbnf" path="res://assets/character/Hobbit - death1.png" id="34_b5gqp"]
 [ext_resource type="Texture2D" uid="uid://duedicybocglf" path="res://assets/character/Hobbit - death2.png" id="35_som0g"]
 [ext_resource type="Texture2D" uid="uid://cq664yogh2q7o" path="res://assets/character/Hobbit - death3.png" id="36_scf6b"]
 [ext_resource type="Texture2D" uid="uid://ba1giu2tahjri" path="res://assets/character/Hobbit - death4.png" id="37_kkx32"]
@@ -93,7 +92,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_3gdnm"]
 resource_name = "Meninggal"
-length = 1.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -101,10 +99,10 @@ tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("34_b5gqp"), ExtResource("35_som0g"), ExtResource("36_scf6b"), ExtResource("37_kkx32"), ExtResource("38_s5xgl"), ExtResource("39_na0uq"), ExtResource("40_d7unb"), ExtResource("41_jn376"), ExtResource("42_hjdyh"), ExtResource("43_fu8dw"), ExtResource("44_uqral"), ExtResource("45_88pji")]
+"values": [ExtResource("35_som0g"), ExtResource("36_scf6b"), ExtResource("37_kkx32"), ExtResource("38_s5xgl"), ExtResource("39_na0uq"), ExtResource("40_d7unb"), ExtResource("41_jn376"), ExtResource("42_hjdyh"), ExtResource("43_fu8dw"), ExtResource("44_uqral"), ExtResource("45_88pji")]
 }
 
 [sub_resource type="Animation" id="Animation_t2eli"]
@@ -243,13 +241,13 @@ script = ExtResource("1_0vkqm")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_c56e0")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="BodyPlayer" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)
 shape = SubResource("CapsuleShape2D_18hdw")
 
-[node name="AttackArea" type="Area2D" parent="."]
+[node name="BlockArea" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlockArea"]
 position = Vector2(6, 1)
 shape = SubResource("CircleShape2D_rpxro")
 
@@ -262,5 +260,5 @@ libraries = {
 wait_time = 0.5
 one_shot = true
 
-[connection signal="area_entered" from="AttackArea" to="." method="_on_attack_area_area_entered"]
+[connection signal="area_entered" from="BlockArea" to="." method="_on_attack_area_area_entered"]
 [connection signal="timeout" from="RangeAttackDelayTimer" to="." method="_on_range_attack_delay_timer_timeout"]
