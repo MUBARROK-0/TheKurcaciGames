@@ -110,6 +110,7 @@ Proyek ini dikembangkan sebagai latihan dalam game development menggunakan Godot
 </video>
 
 **Video Highlights:**
+
 - Demonstrasi movement dan jump mechanics
 - Contoh melee attack (R) melawan musuh
 - Contoh range attack (B) menembak projectile
