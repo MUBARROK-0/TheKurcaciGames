@@ -5,13 +5,14 @@
 1. [Deskripsi Singkat](#deskripsi-singkat)
 2. [Latar Belakang & Tujuan](#latar-belakang--tujuan)
 3. [Fitur Utama Game](#fitur-utama-game)
-4. [Teknologi yang Digunakan](#teknologi-yang-digunakan)
-5. [Struktur Folder Project](#struktur-folder-project)
-6. [Cara Menjalankan Project](#cara-menjalankan-project)
-7. [Kontrol Permainan](#kontrol-permainan)
-8. [Penjelasan Mekanik Game](#penjelasan-mekanik-game)
-9. [Alur Permainan](#alur-permainan)
-10. [Catatan Penting & Pengembangan](#catatan-penting--pengembangan)
+4. [Tampilan Game](#tampilan-game)
+5. [Teknologi yang Digunakan](#teknologi-yang-digunakan)
+6. [Struktur Folder Project](#struktur-folder-project)
+7. [Cara Menjalankan Project](#cara-menjalankan-project)
+8. [Kontrol Permainan](#kontrol-permainan)
+9. [Penjelasan Mekanik Game](#penjelasan-mekanik-game)
+10. [Alur Permainan](#alur-permainan)
+11. [Catatan Penting & Pengembangan](#catatan-penting--pengembangan)
 
 ---
 
@@ -96,6 +97,25 @@ Proyek ini dikembangkan sebagai latihan dalam game development menggunakan Godot
   - **Enemies**: Walk, Attack, Dead variants
 - Frame-based event triggering
 - Signal integration untuk animation completion
+
+---
+
+## 🎬 Tampilan Game
+
+### Demo Gameplay
+
+<video width="100%" controls style="max-width: 800px; display: block; margin: 20px auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
+  <source src="demo/thekurcacigames_demo.mp4" type="video/mp4">
+  Browser Anda tidak mendukung tag video HTML5. Silakan download file: <a href="demo/thekurcacigames_demo.mp4">thekurcacigames_demo.mp4</a>
+</video>
+
+**Video Highlights:**
+- Demonstrasi movement dan jump mechanics
+- Contoh melee attack (R) melawan musuh
+- Contoh range attack (B) menembak projectile
+- Sistem checkpoint dan respawn saat jatuh
+- Level design dengan platform dan obstacle
+- Enemy AI dan combat interactions
 
 ---
 
